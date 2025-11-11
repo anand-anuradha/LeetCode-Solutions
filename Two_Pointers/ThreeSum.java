@@ -1,0 +1,69 @@
+/*
+Problem: 3Sum
+Link: https://leetcode.com/problems/3sum/
+
+Approach:
+- Sort the array to easily handle duplicates and enable the two-pointer pattern.
+- Iterate through the array and treat each element as a potential first value of the triplet.
+- For each element, use two pointers (one starting after the current index, and one at the end) to search for two additional values whose sum equals the negative of the current value.
+- Based on the total sum, adjust pointers inward.
+- When a valid triplet is found, add it to the result and move pointers while skipping duplicates.
+- Continue this process to collect all unique triplets that sum to zero.
+
+Why this is optimal:
+- The two-pointer technique avoids an inner nested loop, reducing complexity from O(n^3) to O(n^2).
+- Sorting allows easy duplicate-skipping and pointer-based adjustments.
+
+Time Complexity: O(n^2)
+- Sorting: O(n log n)
+- Outer loop: O(n)
+- Two-pointer sweep per index: O(n)
+
+Space Complexity: O(1)
+- Aside from the output list, no extra memory is used.
+*/
+
+
+package twoPointers;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class ThreeSum {
+        public List<List<Integer>> threeSum(int[] nums) {
+            Arrays.sort(nums);
+            List<List<Integer>> result = new ArrayList<>();
+
+            for (int i = 0; i<nums.length && nums[i] <=0; i++){
+                if (i == 0 || nums[i] != nums[i-1]){
+                    twoSum2(nums, i, result);
+                }
+            }
+
+            return result;
+
+        }
+
+        void twoSum2(int[] nums, int i, List<List<Integer>> result){
+            int left = i+1;
+            int right = nums.length - 1;
+
+            while(left < right){
+                int sum = nums[i] + nums[left] + nums[right];
+
+                if(sum < 0){
+                    ++left;
+                }
+                else if (sum > 0){
+                    --right;
+                }
+                else{
+                    result.add(Arrays.asList(nums[i], nums[left++], nums[right--]));
+                    while(left < right && nums[left] == nums[left-1]){
+                        ++left;
+                    }
+                }
+            }
+        }
+}
