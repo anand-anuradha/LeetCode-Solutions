@@ -2,7 +2,10 @@ LeetCode Solutions in Java 🚀
 
 This repository contains Java solutions to LeetCode problems, starting from the basics! Each solution includes a clear approach and time/space complexity explanation.
 
-Current Topic :- Arrays
+Topics : Arrays & Hashing
+         Two Pointers
+         Sliding Window
+         Binary Search
 
 📂 Why This Repo ?
         💡Build a strong foundation in Java problem-solving
