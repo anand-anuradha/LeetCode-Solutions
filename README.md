@@ -11,6 +11,9 @@ Topics :
 4. Binary Search
 
 📂 Why This Repo ?
+
 💡Build a strong foundation in Java problem-solving
+
 💡Create a reference for learners
+
 💡Practice and share coding skills with the community
